@@ -54,7 +54,7 @@ class TelegramService extends AppService
      * @param string|null $callback
      * @return void
      */
-    protected function sendCallbackResponse(string $callback = null): void
+    private function sendCallbackResponse(string $callback = null): void
     {
         if (empty($callback)) {
             return;
@@ -79,20 +79,5 @@ class TelegramService extends AppService
             return true;
         }
         return false;
-    }
-
-    /**
-     * @return array[]
-     */
-    public function menuMarkup(): array
-    {
-        return [
-            [
-                $this->telegram->buildInlineKeyBoardButton("📰 About", "", "about", ""),
-                $this->telegram->buildInlineKeyBoardButton("📞 Contact", config('author.contact'))
-            ], [
-                $this->telegram->buildInlineKeyBoardButton("💠 Source Code", config('author.source_code'))
-            ]
-        ];
     }
 }
